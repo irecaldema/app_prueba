@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <!-- <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+        <title>GATITOS GRATIS</title>
+    </head>
+    <body >
+        <script type="text/javascript"> 
+            function suertudo(y) {     
+                //alert("suertudo 1");
+                var image2 = document.getElementById('lanzamiento_moneda');
+                var image = document.getElementById('gato');                 
+                image.src=src="img/interrogante.jpg";
+
+                var x = Math.round(Math.random());//0-1 0 cara 1 es cruz 
+                var n = Math.round(Math.random()*5+10);
+                var contador=0; 
+
+                for  (var i=0; i<n; i++ ){
+                    //alert("suertudo"+i+" "+n);
+                    /*var*/ tiempo1=setTimeout(function (){lanzamiento()},250*(i+1)); 
+                }             
+
+                function lanzamiento() { 
+                    //alert("lanzamiento"+contador+" "+n);
+                    if (contador%2==0) {
+                        image2.src=src="img/cara.jpg";
+                        contador++;
+                    } else {
+                        image2.src=src="img/cruz.jpg";
+                        contador++;
+                    } 
+
+                    if (contador==n){
+                        resultado();   
+                    }
+                }         
+                function resultado(){
+                    if (x==0){
+                        image2.src=src="img/cara.jpg";
+                    } else {
+                        image2.src=src="img/cruz.jpg";
+                    }
+                    
+
+                    if (x==y) {
+                        image.src="img/gato"+Math.round(Math.random()*5)+".jpg";//0-5
+                        alert("¡Enhorabuena!");
+                    }
+                    else {
+                        navigator.vibrate([3000]); 
+                        alert("Intentalo otra vez");
+                    }
+                } 
+            }
+        </script>
+
+        <p align="center">
+            <img id="gato" src="img/interrogante.jpg" >
+        </p>
+
+        <p align="center">
+            <img id="lanzamiento_moneda" >
+        </p> 
+        
+        <p align="center">
+            <button onclick="suertudo(0)">
+                <img id="cara" src="img/cara.jpg" >
+            </button>
+            <button onclick="suertudo(1)">
+                <img id="cruz" src="img/cruz.jpg" >
+            </button>
+        </p>  
+
+        <!--<script type="text/javascript" src="cordova.js"></script>-->
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
