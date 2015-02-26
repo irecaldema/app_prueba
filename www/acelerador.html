@@ -31,16 +31,21 @@
         <title>GATITOS GRATIS</title>
     </head>
     <body >
-        <p align="center"><img align="center" id="gato" src="" onclick="vibrar()"></p>       
+        <p align="center"><img align="center" id="gato" src="img/gatogif/gatogif0.gif" onclick="vibrar()"></p>
+        <p align="center">
+		<video src="video/gatoprueba.webm" onclick="vibrar()" autoplay muted="" loop=""></video>
+		</p>       
         <script type="text/javascript">
-            var image = document.getElementById('gato'); 
-            //numero de imagenes de la galeria -1
-            image.src="img/gato"+Math.round(Math.random()*2)+".jpg";
-        </script>
-        
+        	function cambio_gatitos(){
+        		var image = document.getElementById('gato'); 
+            	image.src="img/gatogif/gatogif"+Math.round(Math.random()*4)+".gif";
+        	}
+
+        </script>        
         <script type="text/javascript">
             //vibrador 
             function vibrar() {
+            	cambio_gatitos();
                 navigator.vibrate([3000]);
             }  
             //cancela la vibracion
