@@ -50,6 +50,7 @@
 
                 function lanzamiento() { 
                     //alert("lanzamiento"+contador+" "+n);
+                    callar();
                     if (contador%2==0) {
                         image2.src=src="img/cara.jpg";
                         contador++;
@@ -73,17 +74,31 @@
                     if (x==y) {
                         image.src="img/gato"+Math.round(Math.random()*5)+".jpg";//0-5
                         alert("¡Enhorabuena!");
+                        gatomusic();
                     }
-                    else {
-                        navigator.vibrate([3000]); 
+                    else { 
                         alert("Intentalo otra vez");
+                        vibrar();
                     }
                 } 
             }
+            function vibrar(){
+                navigator.vibrate([3000]);
+            }
+            function gatomusic(){
+                var audio = document.getElementById('gatomusic');
+                audio.src="musica/Nyan_Cat.m4a";
+            }
+            function callar(){
+                var audio = document.getElementById('gatomusic');
+                audio.src="";                
+            }
         </script>
 
+
+        <audio id="gatomusic" src="" loop="" autoplay=""></audio>
         <p align="center">
-            <img id="gato" src="img/interrogante.jpg" >
+            <img id="gato" src="img/interrogante.jpg" onclick="callar()" >
         </p>
 
         <p align="center">
